@@ -1,6 +1,6 @@
 import { expect } from 'chai';
 import 'mocha';
-import {Spartan} from '../src/Entities/Spartan'
+import {Spartan} from '../src/Domain/Entities/Spartan'
 
 describe('First test', () => {
     it('should return a valid object', () => {
