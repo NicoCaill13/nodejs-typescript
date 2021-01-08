@@ -12,4 +12,5 @@ services:
     environment:
       - NODE_ENV=${NODE_ENV}
       - PORT=${PORT}
+      - HASH_JWT=${HASH_JWT}
     container_name: typescript

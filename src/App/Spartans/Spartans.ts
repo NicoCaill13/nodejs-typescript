@@ -1,4 +1,4 @@
-import {logger} from "../../Infra/logger";
+import {logger} from "../../Infra/Logger";
 
 export class Spartan {
 
