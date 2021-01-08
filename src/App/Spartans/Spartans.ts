@@ -1,3 +1,5 @@
+import {logger} from "../../Infra/logger";
+
 export class Spartan {
 
     /**
@@ -11,9 +13,11 @@ export class Spartan {
      */
     async getAll(req, res){
         try{
+            logger.info(`return spartans list`);
             await res.json({object1: "test", object2: "test2"});
         }
         catch(err){
+            logger.error(`return spartans list failed => ${err}`);
             await res.json({ 'error': err });
         }
     }
@@ -30,9 +34,11 @@ export class Spartan {
      */
     async getOne(req, res){
         try{
+            logger.info(`return spartan ${req.params.id}`);
             await res.json({object1: "test"});
         }
         catch(err){
+            logger.error(`return spartan ${req.params.id} failed => ${err}`);
             await res.json({ 'error': err });
         }
     }
