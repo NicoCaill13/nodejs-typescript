@@ -7,7 +7,8 @@
     "build": "tsc",
     "start.production": "npm run build && node dist/server.js",
     "start.dev": "nodemon src/server.ts",
-    "test": "mocha -r ts-node/register test/test.ts"
+    "test": "mocha -r ts-node/register test/test.ts",
+    "docs": "apidoc -e '(node_modules|public)'  -o public/apidoc"
   },
   "author": "nicolas.cailleux",
   "license": "ISC",
@@ -24,6 +25,7 @@
     "typescript": "^4.1.3"
   },
   "dependencies": {
+    "apidoc": "^0.26.0",
     "body-parser": "^1.19.0",
     "cookie-parser": "^1.4.5",
     "cors": "^2.8.5",
