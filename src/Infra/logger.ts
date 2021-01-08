@@ -27,13 +27,11 @@ const logger = createLogger({
         }),
         printf(info => `${info.timestamp} ${info.level}: ${info.message}`)
     ),
-    // You can also comment out the line above and uncomment the line below for JSON format
-    // format: format.json(),
     transports: [
         new transports.Console({
             level: env === 'dev' ? 'verbose' : 'info',
             format: combine(
-                label({ label: path.basename(process.mainModule.filename) }),
+                label({ label: path.basename(require.main.filename) }),
                 colorize(),
                 printf(
                     info => `${info.timestamp} ${info.level} [${info.label}]: ${info.message}`
