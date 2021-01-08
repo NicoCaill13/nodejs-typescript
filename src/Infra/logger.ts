@@ -11,18 +11,13 @@ if (!fs.existsSync(logDir)) {
     fs.mkdirSync(logDir);
 }
 
-const dailyRotateFileTransportInfo = new transports.DailyRotateFile({
-    filename: `${logDir}/%DATE%/access.log`,
+const dailyRotateFileTransport = level => new transports.DailyRotateFile({
+    filename: `${logDir}/%DATE%/${level}.log`,
     datePattern: 'YYYY-MM-DD',
     zippedArchive: true,
-    level: 'info'
+    level: level
 });
-const dailyRotateFileTransportError = new transports.DailyRotateFile({
-    filename: `${logDir}/%DATE%/error.log`,
-    datePattern: 'YYYY-MM-DD',
-    zippedArchive: true,
-    level: 'error'
-});
+
 
 const logger = createLogger({
     level: env === 'dev' ? 'verbose' : 'info',
@@ -45,8 +40,8 @@ const logger = createLogger({
                 )
             )
         }),
-        dailyRotateFileTransportError,
-        dailyRotateFileTransportInfo
+        dailyRotateFileTransport('info'),
+        dailyRotateFileTransport('error')
     ]
 });
 
